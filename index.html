@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vaibhav Ingle — AWS DevOps Engineer</title>
   <meta name="description" content="Portfolio of Vaibhav Sudhakar Ingle, AWS DevOps Engineer building scalable cloud infrastructure with Kubernetes, Terraform, DevSecOps, and GitOps." />
-  <meta name="theme-color" content="#02040a" />
+  <meta name="theme-color" content="#010205" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,21 +19,16 @@
 
   <style>
     :root {
-      /* Core Colors */
-      --bg-deep: #02040a;
-      
-      /* Accents */
+      --bg-deep: #010205;
+      --bg-darker: #000000;
       --aws-orange: #ff9900;
       --k8s-blue: #326ce5;
       --tf-purple: #844fba;
       --neon-cyan: #00e5ff;
+      --neon-pink: #f0abfc;
       --success-green: #10b981;
-      
-      /* Glass/Panels */
-      --panel-bg: rgba(6, 10, 20, 0.6);
-      --panel-border: rgba(0, 229, 255, 0.15);
-      
-      /* Typography */
+      --panel-bg: rgba(4, 7, 15, 0.75);
+      --panel-border: rgba(0, 229, 255, 0.12);
       --text-main: #f8fafc;
       --text-dim: #94a3b8;
       --font-main: 'Chakra Petch', sans-serif;
@@ -60,24 +56,16 @@
     .nebula-bg {
       position: fixed; inset: 0; z-index: -2;
       background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 153, 0, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 15% 85%, rgba(50, 108, 229, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(132, 79, 186, 0.05) 0%, transparent 60%);
+        radial-gradient(circle at 85% 15%, rgba(255, 153, 0, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 15% 85%, rgba(50, 108, 229, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(132, 79, 186, 0.04) 0%, transparent 55%),
+        radial-gradient(circle at 0% 0%, #000000 0%, #010205 100%);
       pointer-events: none; mix-blend-mode: screen;
-    }
-
-    .bg-grid {
-      position: fixed; inset: 0; z-index: -2;
-      background-image: 
-        linear-gradient(to right, rgba(0, 229, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none;
     }
 
     .scanline {
       position: fixed; inset: 0;
-      background: linear-gradient(to bottom, transparent 50%, rgba(0, 229, 255, 0.02) 51%);
+      background: linear-gradient(to bottom, transparent 50%, rgba(0, 229, 255, 0.015) 51%);
       background-size: 100% 4px;
       pointer-events: none; z-index: -1;
     }
@@ -89,9 +77,9 @@
 
     header {
       position: sticky; top: 0; z-index: 100;
-      background: linear-gradient(to bottom, rgba(2,4,10,0.95) 0%, rgba(2,4,10,0.7) 100%);
+      background: linear-gradient(to bottom, rgba(1,2,5,0.98) 0%, rgba(1,2,5,0.85) 100%);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.12);
       padding: 0.5rem 0;
     }
 
@@ -103,10 +91,10 @@
       background: linear-gradient(135deg, var(--aws-orange), var(--tf-purple), var(--neon-cyan));
       border-radius: 10px; color: var(--bg-deep);
       font-weight: 700; font-size: 1.2rem;
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
       animation: pulse-glow 3s infinite alternate;
     }
-    @keyframes pulse-glow { 0% { box-shadow: 0 0 15px rgba(0,229,255,0.3); } 100% { box-shadow: 0 0 25px rgba(0,229,255,0.6); } }
+    @keyframes pulse-glow { 0% { box-shadow: 0 0 10px rgba(0,229,255,0.2); } 100% { box-shadow: 0 0 20px rgba(0,229,255,0.5); } }
     
     .brand div { display: flex; flex-direction: column; }
     .brand strong { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-main); }
@@ -124,7 +112,7 @@
       width: 0; height: 2px; background: var(--neon-cyan); transition: width 0.3s ease;
     }
     .links a:hover::after, .links a.active::after { width: 80%; }
-    .links a:hover, .links a.active { color: var(--neon-cyan); background: rgba(0, 229, 255, 0.08); }
+    .links a:hover, .links a.active { color: var(--neon-cyan); background: rgba(0, 229, 255, 0.06); }
 
     .menu-btn {
       display: grid; place-items: center; width: 45px; height: 45px;
@@ -132,10 +120,10 @@
       color: var(--neon-cyan); cursor: pointer; transition: 0.3s;
     }
     .menu-btn:hover { background: var(--neon-cyan); color: var(--bg-deep); }
-    
+
     .drawer {
       display: none; position: fixed; inset: 0; z-index: 300;
-      background: rgba(2,4,10,0.95); backdrop-filter: blur(15px);
+      background: rgba(1,2,5,0.96); backdrop-filter: blur(15px);
     }
     .drawer.open { display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .drawer nav { display: flex; flex-direction: column; gap: 20px; text-align: center; }
@@ -152,7 +140,7 @@
       position: relative; background: var(--panel-bg);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--panel-border); border-radius: 12px;
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9), 0 10px 30px rgba(0, 0, 0, 0.5);
       overflow: hidden; transition: all 0.3s ease;
     }
     .hud::before, .hud::after, .hud .cbl, .hud .cbr { content: ""; position: absolute; width: 15px; height: 15px; pointer-events: none; z-index: 5; }
@@ -160,7 +148,7 @@
     .hud::after { top: 0; right: 0; border-top: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); border-top-right-radius: 12px; }
     .hud .cbl { bottom: 0; left: 0; border-bottom: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan); border-bottom-left-radius: 12px; }
     .hud .cbr { bottom: 0; right: 0; border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); border-bottom-right-radius: 12px; }
-    .hud:hover { border-color: rgba(0,229,255,0.4); box-shadow: inset 0 0 20px rgba(0,229,255,0.1), 0 10px 40px rgba(0,0,0,0.6); }
+    .hud:hover { border-color: rgba(0,229,255,0.4); box-shadow: inset 0 0 25px rgba(0,229,255,0.08), 0 10px 40px rgba(0,0,0,0.7); }
 
     .kicker {
       display: inline-flex; align-items: center; gap: 8px;
@@ -169,22 +157,22 @@
     }
     .kicker::before { content: ""; width: 25px; height: 2px; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
 
-    .hero { padding: 120px 0 80px; }
+    .hero { padding: 90px 0 60px; overflow: hidden; }
     .hero-grid { display: grid; gap: 50px; grid-template-columns: 1fr; }
-    @media(min-width: 1024px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; align-items: center; } }
+    @media(min-width: 1024px) { .hero-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; } }
 
     .hero-content h1 {
-      font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.05; margin: 15px 0 5px;
-      text-transform: uppercase; letter-spacing: -0.02em; font-family: 'Chakra Petch', sans-serif;
-      text-shadow: 0 0 20px rgba(255,255,255,0.1);
+      font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; line-height: 1.05; margin: 15px 0 5px;
+      text-transform: uppercase; letter-spacing: -0.02em;
     }
     .hero-content h1 .gradient-text {
-      background: linear-gradient(to right, #ffffff, #e2e8f0);
+      background: linear-gradient(to right, var(--neon-cyan), #818cf8, var(--aws-orange));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(0, 229, 255, 0.2);
     }
     .typewriter {
       font-family: var(--font-mono); font-size: 1.4rem; color: var(--success-green);
-      margin-bottom: 20px; font-weight: 600; text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+      margin-bottom: 20px; font-weight: 600; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
       border-right: 2px solid var(--success-green); white-space: nowrap; overflow: hidden;
       animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     }
@@ -196,144 +184,157 @@
     .btns { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 35px; }
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 24px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.95rem; font-weight: 600;
+      padding: 14px 28px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.95rem; font-weight: 600;
       text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.3s ease;
-      position: relative; letter-spacing: 1px;
+      position: relative; overflow: hidden;
     }
-    
-    /* Metallic Button Styling */
     .btn-primary {
-      background: rgba(0, 20, 40, 0.6); border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
-      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15), inset 0 0 10px rgba(0, 229, 255, 0.1);
+      background: rgba(0, 229, 255, 0.08); border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
     }
-    .btn-primary:hover { 
-      background: rgba(0, 229, 255, 0.1); 
-      box-shadow: 0 0 25px rgba(0, 229, 255, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.2); 
+    .btn-primary::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3), transparent);
+      transition: all 0.5s ease;
     }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 25px rgba(0, 229, 255, 0.5); }
     
-    .btn-outline { 
-      background: linear-gradient(180deg, #333333 0%, #111111 100%); 
-      border: 1px solid #555; color: #fff; 
-      box-shadow: 0 4px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
-    }
-    .btn-outline:hover { 
-      border-color: #888; background: linear-gradient(180deg, #444444 0%, #222222 100%); 
-      transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.2);
-    }
+    .btn-outline { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.15); color: var(--text-main); }
+    .btn-outline:hover { border-color: var(--aws-orange); color: var(--aws-orange); background: rgba(255,153,0,0.04); transform: translateY(-2px); }
 
+    /* ─── REALISTIC 3D DEEP-SPACE SOLAR SYSTEM ─── */
     .orbital-system {
-      position: relative; width: 100%; max-width: 550px; aspect-ratio: 1;
+      position: relative; width: 100%; max-width: 500px; aspect-ratio: 1;
       margin: 0 auto; display: flex; justify-content: center; align-items: center;
     }
-    
     @media(max-width: 768px) {
-        .orbital-system { transform: scale(0.6); margin: -60px auto; }
+      .orbital-system { transform: scale(0.75); margin: -40px auto; }
     }
 
-    /* Blazing Sun Core */
+    /* Core Sun (AWS Star) */
     .orb-center {
-      position: absolute; width: 140px; height: 140px; border-radius: 50%;
-      background: radial-gradient(circle at 50% 50%, #fffbd6 0%, #ffc000 20%, #ff6a00 50%, #cc0000 100%);
-      box-shadow: 0 0 60px #ff6a00, 0 0 120px #ffc000, inset 0 0 20px #fff;
-      display: grid; place-items: center; font-size: 4rem; color: #fff; z-index: 10;
-      animation: sun-pulse 4s ease-in-out infinite alternate;
+      position: absolute; width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ffdf6d 25%, #ff9900 65%, #993300 100%);
+      box-shadow: 0 0 50px rgba(255, 153, 0, 0.4), inset 0 0 25px rgba(255, 255, 255, 0.7);
+      display: grid; place-items: center; font-size: 3.5rem; color: #fff; z-index: 10;
+      animation: sun-pulse 4s infinite alternate;
+      border: 2px solid rgba(255, 220, 100, 0.4);
     }
     @keyframes sun-pulse {
-        0% { transform: scale(1); box-shadow: 0 0 60px #ff6a00, 0 0 120px #ffc000, inset 0 0 20px #fff; }
-        100% { transform: scale(1.05); box-shadow: 0 0 80px #ff6a00, 0 0 150px #ffc000, inset 0 0 30px #fff; }
+      0% { box-shadow: 0 0 40px rgba(255,153,0,0.35), inset 0 0 20px rgba(255,255,255,0.5); transform: scale(1); }
+      100% { box-shadow: 0 0 65px rgba(255,153,0,0.6), inset 0 0 30px rgba(255,255,255,0.8); transform: scale(1.02); }
     }
 
-    /* Rotation Wrappers */
-    .orb-wrapper {
-      position: absolute; width: 100%; height: 100%;
-      border-radius: 50%; display: flex; justify-content: center; align-items: center;
-      animation: spin linear infinite;
-    }
-    .w1 { width: 260px; height: 260px; animation-duration: 20s; }
-    .w2 { width: 400px; height: 400px; animation-duration: 35s; animation-direction: reverse; }
-    .w3 { width: 540px; height: 540px; animation-duration: 50s; }
-
-    /* Orbital Rings (Trails) */
+    /* Orbital Rings */
     .orb-ring {
-      position: absolute; width: 100%; height: 100%; border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-    }
-    
-    /* Offsets to space planets evenly */
-    .pos-180 { transform: rotate(180deg); }
-    .pos-120 { transform: rotate(120deg); }
-    .pos-240 { transform: rotate(240deg); }
-
-    /* 3D Realistic Planets */
-    .planet {
       position: absolute; border-radius: 50%;
-      display: grid; place-items: center; color: #fff;
-      /* Inner shadow creates the 3D spherical illusion */
-      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0,0,0,0.5);
+      border: 1px dashed rgba(0, 229, 255, 0.12);
+      box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.015);
+    }
+    .ring-1 { width: 210px; height: 210px; border-color: rgba(50, 108, 229, 0.2); }
+    .ring-2 { width: 330px; height: 330px; border-color: rgba(132, 79, 186, 0.2); }
+    .ring-3 { width: 450px; height: 450px; border-color: rgba(0, 229, 255, 0.15); }
+
+    /* Wrappers for rotation */
+    .orb-wrapper { position: absolute; width: 100%; height: 100%; border-radius: 50%; animation: spin linear infinite; }
+    .w1 { animation-duration: 22s; }
+    .w2 { animation-duration: 34s; animation-direction: reverse; }
+    .w3 { animation-duration: 48s; }
+    
+    .pos-60  { transform: rotate(60deg); }
+    .pos-120 { transform: rotate(120deg); }
+    .pos-180 { transform: rotate(180deg); }
+    .pos-240 { transform: rotate(240deg); }
+    .pos-300 { transform: rotate(300deg); }
+
+    /* Realistic Textured Planet Nodes (Darker Space Lighting) */
+    .orb-node {
+      position: absolute; width: 46px; height: 46px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 1.2rem; color: #fff;
+      top: -23px; left: calc(50% - 23px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.8), inset 0 2px 8px rgba(255,255,255,0.25);
       animation: counter-spin linear infinite;
-      top: 0; left: 50%; transform: translate(-50%, -50%); /* Start at top center of wrapper */
+      transition: transform 0.3s ease;
     }
-    
-    /* K8s Planet (Ice/Water) */
-    .planet-k8s {
-      width: 60px; height: 60px; font-size: 1.5rem; margin-top: -30px;
-      background: radial-gradient(circle at 30% 30%, #a0e8ff, #326ce5 60%, #002266);
-      animation-duration: 20s;
-    }
-    
-    /* Docker Planet (Blue Ocean) */
+    .orb-node:hover { transform: scale(1.2); z-index: 20; }
+    .n1 { animation-duration: 22s; }
+    .n2 { animation-duration: 34s; animation-direction: reverse; }
+    .n3 { animation-duration: 48s; }
+
+    /* Darker, Realistic Shaded Planetary Textures */
     .planet-docker {
-      width: 50px; height: 50px; font-size: 1.2rem; margin-top: -25px;
-      background: radial-gradient(circle at 30% 30%, #88ccff, #2496ED 60%, #003366);
-      animation-duration: 20s;
+      background: radial-gradient(circle at 30% 30%, #3bb2f5 0%, #0c4d7c 60%, #031b30 100%);
+      border: 1.5px solid #2496ED;
+      box-shadow: 0 0 15px rgba(36, 150, 237, 0.3), inset 0 2px 6px rgba(255,255,255,0.3);
     }
-
-    /* Terraform Planet (Purple Gas Giant with Rings) */
-    .planet-tf {
-      width: 75px; height: 75px; font-size: 1.6rem; margin-top: -37.5px;
-      background: radial-gradient(circle at 30% 30%, #e8b0ff, #844fba 60%, #3a0066);
-      animation-duration: 35s; animation-direction: reverse;
+    .planet-k8s {
+      background: radial-gradient(circle at 35% 35%, #7ea6f7 0%, #1c4bb5 60%, #0a2054 100%);
+      border: 1.5px solid #326CE5;
+      box-shadow: 0 0 15px rgba(50, 108, 229, 0.35), inset 0 2px 6px rgba(255,255,255,0.3);
     }
-    .planet-tf::after {
-      content: ''; position: absolute; width: 170%; height: 35%;
-      border: 4px solid rgba(200, 150, 255, 0.5); border-radius: 50%; transform: rotate(25deg);
-      box-shadow: 0 0 15px rgba(200, 150, 255, 0.4);
+    .planet-terraform {
+      background: radial-gradient(circle at 25% 25%, #a872f0 0%, #582a94 60%, #200c3b 100%);
+      border: 1.5px solid #844FBA;
+      box-shadow: 0 0 15px rgba(132, 79, 186, 0.35), inset 0 2px 6px rgba(255,255,255,0.25);
     }
-
-    /* Red Magma Planet (Git/Security) */
-    .planet-magma {
-      width: 55px; height: 55px; font-size: 1.4rem; margin-top: -27.5px;
-      background: radial-gradient(circle at 30% 30%, #ff8888, #cc0000 60%, #440000);
-      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.9), 0 0 20px rgba(204, 0, 0, 0.6);
-      animation-duration: 35s; animation-direction: reverse;
+    .planet-devsecops {
+      background: radial-gradient(circle at 30% 30%, #f55b5b 0%, #991111 60%, #380202 100%);
+      border: 1.5px solid #cc2222;
+      box-shadow: 0 0 15px rgba(204, 34, 34, 0.35), inset 0 2px 6px rgba(255,200,200,0.3);
     }
-
-    /* Rocky Planet (Prometheus/Observability) */
-    .planet-rocky {
-      width: 65px; height: 65px; font-size: 1.5rem; margin-top: -32.5px;
-      background: radial-gradient(circle at 30% 30%, #ffeebb, #c2823a 60%, #553311);
-      animation-duration: 50s;
-    }
-    
-    /* Jenkins Planet */
     .planet-jenkins {
-      width: 55px; height: 55px; font-size: 1.3rem; margin-top: -27.5px;
-      background: radial-gradient(circle at 30% 30%, #ffcccc, #D24939 60%, #660000);
-      animation-duration: 50s;
+      background: radial-gradient(circle at 30% 30%, #e86450 0%, #ab3224 60%, #45100a 100%);
+      border: 1.5px solid #d24939;
+      box-shadow: 0 0 15px rgba(210, 73, 57, 0.35);
+    }
+    .planet-linux {
+      background: radial-gradient(circle at 30% 30%, #e6bd35 0%, #947209 60%, #3d2f02 100%);
+      border: 1.5px solid #c49611;
+      box-shadow: 0 0 15px rgba(196, 150, 17, 0.3);
+    }
+    .planet-prometheus {
+      background: radial-gradient(circle at 30% 30%, #f76e4a 0%, #a83113 60%, #421004 100%);
+      border: 1.5px solid #e6522c;
+      box-shadow: 0 0 15px rgba(230, 82, 44, 0.35);
+    }
+    .planet-sonarqube {
+      background: radial-gradient(circle at 30% 30%, #eb4649 0%, #96161a 60%, #3b0507 100%);
+      border: 1.5px solid #cb2127;
+      box-shadow: 0 0 15px rgba(203, 33, 39, 0.35);
+    }
+
+    /* Saturn-like Ringed Planet for Terraform */
+    .saturn-ring-wrapper {
+      position: absolute; width: 80px; height: 80px; display: grid; place-items: center;
+      top: -40px; left: calc(50% - 40px); pointer-events: none;
+      animation: counter-spin linear infinite 34s;
+    }
+    .saturn-disk {
+      position: absolute; width: 76px; height: 24px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(132,79,186,0.5), rgba(180,130,230,0.15), rgba(100,50,150,0.6));
+      transform: rotate(-22deg);
+      border: 1px solid rgba(180,130,230,0.3);
+      box-shadow: 0 0 10px rgba(132,79,186,0.25);
+      z-index: 1; pointer-events: none;
+    }
+    .saturn-body {
+      position: absolute; width: 42px; height: 42px; border-radius: 50%;
+      background: radial-gradient(circle at 25% 25%, #a872f0 0%, #582a94 60%, #200c3b 100%);
+      border: 1.5px solid #9b61ea;
+      box-shadow: 0 0 15px rgba(132, 79, 186, 0.4), inset 0 2px 6px rgba(255,255,255,0.3);
+      z-index: 2; display: grid; place-items: center; font-size: 1.1rem; color: #fff;
     }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes counter-spin { 
-        0% { transform: translate(-50%, -50%) rotate(0deg); }
-        100% { transform: translate(-50%, -50%) rotate(-360deg); } 
-    }
+    @keyframes counter-spin { 100% { transform: rotate(-360deg); } }
 
+    /* ─── WHAT I BUILD ─── */
     .build-section { margin-top: -20px; margin-bottom: 60px; }
     .build-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .build-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.5) 100%);
-      border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 25px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.4) 100%);
+      border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; padding: 25px;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
     }
     .build-card::before {
@@ -361,7 +362,7 @@
     .photo-container::before {
       content: ''; position: absolute; inset: -8px; border-radius: 50%;
       background: conic-gradient(from 0deg, var(--neon-cyan), var(--aws-orange), var(--tf-purple), var(--neon-cyan));
-      animation: rotate-gradient 4s linear infinite; z-index: 1; opacity: 0.8;
+      animation: rotate-gradient 4s linear infinite; z-index: 1; opacity: 0.7;
     }
     .photo-container::after {
       content: ''; position: absolute; inset: 0; border-radius: 50%;
@@ -377,13 +378,13 @@
     blockquote {
       border-left: 4px solid var(--aws-orange); padding-left: 20px; margin-top: 25px;
       font-size: 1.2rem; font-style: italic; color: var(--text-main); 
-      background: linear-gradient(90deg, rgba(255,153,0,0.1), transparent); padding: 20px; border-radius: 0 12px 12px 0;
+      background: linear-gradient(90deg, rgba(255,153,0,0.08), transparent); padding: 20px; border-radius: 0 12px 12px 0;
     }
     blockquote footer { font-family: var(--font-mono); font-size: 0.9rem; color: var(--aws-orange); margin-top: 10px; font-style: normal; }
 
     .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; }
-    .meta-item { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 10px; transition: 0.3s; }
-    .meta-item:hover { border-color: var(--neon-cyan); background: rgba(0,229,255,0.05); }
+    .meta-item { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 20px; border-radius: 10px; transition: 0.3s; }
+    .meta-item:hover { border-color: var(--neon-cyan); background: rgba(0,229,255,0.04); }
     .meta-item dt { font-family: var(--font-mono); font-size: 0.8rem; color: var(--tf-purple); text-transform: uppercase; margin-bottom: 8px; }
     .meta-item dd { font-weight: 600; font-size: 1rem; }
 
@@ -394,22 +395,21 @@
     .skill-cat h3 { font-size: 1.2rem; color: var(--neon-cyan); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
     .pills { display: flex; flex-wrap: wrap; gap: 10px; }
     .pill {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.12);
       padding: 8px 16px; border-radius: 20px; font-family: var(--font-mono); font-size: 0.85rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .pill:hover { background: rgba(0, 229, 255, 0.15); border-color: var(--neon-cyan); color: var(--neon-cyan); transform: scale(1.05); box-shadow: 0 0 15px rgba(0,229,255,0.3); }
+    .pill:hover { background: rgba(0, 229, 255, 0.12); border-color: var(--neon-cyan); color: var(--neon-cyan); transform: scale(1.05); box-shadow: 0 0 15px rgba(0,229,255,0.25); }
 
+    /* Infinite Marquee */
     .hex-wrapper {
       width: 100%; overflow: hidden; padding: 30px 0; margin-top: 20px; position: relative;
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
-    .hex-track { display: flex; width: max-content; animation: scroll-left 40s linear infinite; gap: 40px; padding-left: 40px; }
+    .hex-track { display: flex; width: max-content; animation: scroll-left 35s linear infinite; gap: 40px; padding-left: 40px; }
     .hex-track:hover { animation-play-state: paused; }
     @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    
-    .hex-set { display: flex; gap: 40px; }
     
     .hex-item { display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; }
     .hex-icon {
@@ -420,38 +420,38 @@
     .hex-icon::after {
       content: ''; position: absolute; inset: 0; background: inherit; filter: blur(10px); opacity: 0; transition: 0.4s; z-index: -1;
     }
-    .hex-item:hover .hex-icon { background: rgba(255,255,255,0.1); transform: scale(1.15) rotate(10deg); }
-    .hex-item:hover .hex-icon::after { opacity: 0.8; }
+    .hex-item:hover .hex-icon { background: rgba(255,255,255,0.08); transform: scale(1.15) rotate(10deg); }
+    .hex-item:hover .hex-icon::after { opacity: 0.7; }
     .hex-item span { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-    .hex-item:hover span { color: var(--text-main); text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    .hex-item:hover span { color: var(--text-main); text-shadow: 0 0 10px rgba(255,255,255,0.4); }
 
     .project-grid { display: grid; gap: 30px; margin-top: 40px; grid-template-columns: 1fr; }
     @media(min-width: 768px) { .project-grid { grid-template-columns: 1fr 1fr; } }
     @media(min-width: 1200px) { .project-grid { grid-template-columns: 1fr 1fr 1fr; } }
 
     .proj-card { padding: 30px; display: flex; flex-direction: column; height: 100%; transition: all 0.4s ease; }
-    .proj-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,229,255,0.15); border-color: var(--neon-cyan); }
+    .proj-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.7), inset 0 0 20px rgba(0,229,255,0.1); border-color: var(--neon-cyan); }
     
     .proj-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-    .proj-num { font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.05); line-height: 1; transition: 0.4s; }
-    .proj-card:hover .proj-num { color: var(--neon-cyan); text-shadow: 0 0 20px rgba(0,229,255,0.5); }
+    .proj-num { font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.04); line-height: 1; transition: 0.4s; }
+    .proj-card:hover .proj-num { color: var(--neon-cyan); text-shadow: 0 0 20px rgba(0,229,255,0.4); }
     .proj-icon { width: 50px; height: 50px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; }
     
     .proj-card h3 { font-size: 1.3rem; margin-bottom: 12px; line-height: 1.4; color: #fff; }
     .proj-card p { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 20px; flex-grow: 1; }
     
     .proj-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
-    .proj-tech span { font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 10px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: var(--text-main); }
+    .proj-tech span { font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 10px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; color: var(--text-main); }
     
     .proj-actions { display: flex; gap: 15px; margin-top: auto; }
     .proj-actions button, .proj-actions a { flex: 1; text-align: center; justify-content: center; padding: 10px; font-size: 0.85rem; border-radius: 6px; }
 
     .timeline { padding: 30px; display: flex; flex-direction: column; gap: 30px; }
-    .tl-item { position: relative; padding-left: 30px; border-left: 2px solid rgba(255,255,255,0.1); }
-    .tl-item::before { content: ''; position: absolute; left: -8px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--aws-orange); box-shadow: 0 0 15px var(--aws-orange); }
+    .tl-item { position: relative; padding-left: 30px; border-left: 2px solid rgba(255,255,255,0.08); }
+    .tl-item::before { content: ''; position: absolute; left: -8px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: var(--aws-orange); box-shadow: 0 0 12px var(--aws-orange); }
     .tl-item h3 { font-size: 1.3rem; margin-bottom: 4px; color: #fff; }
     .tl-item h4 { font-size: 1rem; color: var(--text-dim); font-weight: 500; margin-bottom: 12px; }
-    .tl-date { display: inline-block; font-family: var(--font-mono); font-size: 0.85rem; background: rgba(255,153,0,0.15); color: var(--aws-orange); padding: 4px 10px; border-radius: 6px; margin-bottom: 15px; border: 1px solid rgba(255,153,0,0.3); }
+    .tl-date { display: inline-block; font-family: var(--font-mono); font-size: 0.85rem; background: rgba(255,153,0,0.12); color: var(--aws-orange); padding: 4px 10px; border-radius: 6px; margin-bottom: 15px; border: 1px solid rgba(255,153,0,0.25); }
     .tl-item ul { list-style: none; padding-left: 15px; }
     .tl-item li { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 8px; position: relative; padding-left: 15px; }
     .tl-item li::before { content: '>'; position: absolute; left: 0; color: var(--neon-cyan); font-family: var(--font-mono); font-weight: bold; }
@@ -459,11 +459,11 @@
     .contact-grid { display: grid; gap: 20px; margin-top: 30px; grid-template-columns: 1fr; }
     @media(min-width: 600px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
     .contact-card { padding: 40px; text-align: center; }
-    .contact-grid a { justify-content: center; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); padding: 20px; font-size: 1rem; font-weight: 600; font-family: var(--font-main); letter-spacing: 1px; }
+    .contact-grid a { justify-content: center; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.12); padding: 20px; font-size: 1rem; font-weight: 600; font-family: var(--font-main); letter-spacing: 1px; }
     .contact-grid a i { font-size: 1.3rem; }
-    .contact-grid a:hover { border-color: var(--neon-cyan); background: rgba(0,229,255,0.1); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,229,255,0.15); }
+    .contact-grid a:hover { border-color: var(--neon-cyan); background: rgba(0,229,255,0.08); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,229,255,0.12); }
 
-    footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 0; margin-top: 60px; background: rgba(2,4,10,0.9); }
+    footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 40px 0; margin-top: 60px; background: rgba(1,2,5,0.95); }
     .foot-content { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; }
     .foot-content p { font-size: 0.9rem; color: var(--text-dim); }
 
@@ -475,17 +475,13 @@
     .modal-arch { display: flex; flex-wrap: wrap; gap: 15px; margin: 25px 0; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 10px; border: 1px dashed rgba(255,255,255,0.2); }
     .arch-node { font-family: var(--font-mono); font-size: 0.9rem; color: var(--neon-cyan); display: flex; align-items: center; gap: 10px; background: rgba(0,229,255,0.1); padding: 6px 12px; border-radius: 4px; }
     .arch-node:not(:last-child)::after { content: '\f061'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: var(--text-dim); margin-left: 10px; }
-
   </style>
 </head>
 <body>
-  <!-- Dynamic Backgrounds -->
   <canvas id="cosmic-canvas"></canvas>
   <div class="nebula-bg"></div>
-  <div class="bg-grid"></div>
   <div class="scanline"></div>
 
-  <!-- Header -->
   <header>
     <div class="wrap nav">
       <a class="brand" href="#home">
@@ -508,7 +504,6 @@
     </div>
   </header>
 
-  <!-- Mobile Menu -->
   <div class="drawer" id="drawer">
     <button class="x" id="close-menu"><i class="fas fa-times"></i></button>
     <nav>
@@ -522,12 +517,11 @@
   </div>
 
   <main>
-    <!-- ─── HERO SECTION ─── -->
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <!-- Left: Content -->
         <div class="hero-content">
-          <p class="kicker"><span style="display:inline-block; width:20px; height:2px; background:var(--neon-cyan); margin-right:8px;"></span> CONNECTION ESTABLISHED</p>
+          <p class="kicker">Connection Established</p>
           <h1 class="gradient-text">VAIBHAV<br>SUDHAKAR INGLE</h1>
           <div class="typewriter">> AWS DevOps Engineer_</div>
           <p class="tag">Engineering scalable, secure, and automated cloud infrastructure with AWS, Kubernetes, Terraform, DevSecOps, and GitOps methodologies.</p>
@@ -539,36 +533,70 @@
           </div>
         </div>
         
-        <!-- Right: Realistic 3D Orbital System -->
+        <!-- Right: HD Realistic Solar/Orbital System -->
         <div class="orbital-system">
           
-          <!-- Blazing Center Sun -->
-          <div class="orb-center" title="AWS Core">
+          <!-- Core Sun (AWS) -->
+          <div class="orb-center" title="AWS Core Engine">
             <i class="fab fa-aws"></i>
           </div>
 
           <!-- Ring 1 (Inner) -->
-          <div class="orb-wrapper w1">
-            <div class="orb-ring"></div>
-            <div class="planet planet-k8s"><i class="fas fa-dharmachakra"></i></div>
-            <div class="planet planet-docker pos-180"><i class="fab fa-docker"></i></div>
+          <div class="orb-ring ring-1">
+            <div class="orb-wrapper w1">
+              <div class="orb-node planet-docker" title="Docker Containers">
+                <i class="fab fa-docker"></i>
+              </div>
+            </div>
+            <div class="orb-wrapper w1 pos-180">
+              <div class="orb-node planet-linux" title="Linux OS">
+                <i class="devicon-linux-plain"></i>
+              </div>
+            </div>
           </div>
 
           <!-- Ring 2 (Middle) -->
-          <div class="orb-wrapper w2">
-            <div class="orb-ring"></div>
-            <div class="planet planet-tf"><i class="fas fa-network-wired"></i></div>
-            <div class="planet planet-magma pos-180"><i class="fab fa-git-alt"></i></div>
+          <div class="orb-ring ring-2">
+            <div class="orb-wrapper w2">
+              <div class="orb-node planet-k8s" title="Kubernetes Cluster">
+                <i class="fas fa-dharmachakra"></i>
+              </div>
+            </div>
+            <!-- Saturn-like ringed planet for Terraform -->
+            <div class="orb-wrapper w2 pos-120">
+              <div class="saturn-ring-wrapper" title="Terraform IaC">
+                <div class="saturn-disk"></div>
+                <div class="saturn-body">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+              </div>
+            </div>
+            <div class="orb-wrapper w2 pos-240">
+              <div class="orb-node planet-devsecops" title="DevSecOps & Ansible">
+                <i class="devicon-ansible-plain"></i>
+              </div>
+            </div>
           </div>
 
           <!-- Ring 3 (Outer) -->
-          <div class="orb-wrapper w3">
-            <div class="orb-ring"></div>
-            <div class="planet planet-rocky pos-120"><i class="fas fa-chart-line"></i></div>
-            <div class="planet planet-jenkins pos-240"><i class="fab fa-jenkins"></i></div>
-            <div class="planet planet-rocky" style="background: radial-gradient(circle at 30% 30%, #ffd480, #8b5cf6 60%, #3a0066);"><i class="fas fa-shield-alt"></i></div>
+          <div class="orb-ring ring-3">
+            <div class="orb-wrapper w3">
+              <div class="orb-node planet-jenkins" title="Jenkins CI/CD">
+                <i class="fab fa-jenkins"></i>
+              </div>
+            </div>
+            <div class="orb-wrapper w3 pos-120">
+              <div class="orb-node planet-sonarqube" title="SonarQube Security">
+                <i class="fas fa-shield-halved"></i>
+              </div>
+            </div>
+            <div class="orb-wrapper w3 pos-240">
+              <div class="orb-node planet-prometheus" title="Prometheus Monitoring">
+                <i class="devicon-prometheus-original"></i>
+              </div>
+            </div>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -578,28 +606,28 @@
       <div class="wrap">
         <div class="build-grid">
           <article class="build-card">
-            <div class="build-ico" style="color: var(--aws-orange); background: rgba(255,153,0,0.1); border: 1px solid rgba(255,153,0,0.3);"><i class="fab fa-aws"></i></div>
+            <div class="build-ico" style="color: var(--aws-orange); background: rgba(255,153,0,0.08); border: 1px solid rgba(255,153,0,0.25);"><i class="fab fa-aws"></i></div>
             <h3>Cloud Infrastructure</h3>
             <p>AWS architectures automated via Terraform modules for scalable, repeatable deployments.</p>
           </article>
           <article class="build-card">
-            <div class="build-ico" style="color: var(--neon-cyan); background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3);"><i class="fas fa-code-branch"></i></div>
+            <div class="build-ico" style="color: var(--neon-cyan); background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.25);"><i class="fas fa-code-branch"></i></div>
             <h3>CI/CD Automation</h3>
             <p>End-to-end delivery pipelines utilizing Jenkins, GitHub Actions, and AWS Code tools.</p>
           </article>
           <article class="build-card">
-            <div class="build-ico" style="color: var(--k8s-blue); background: rgba(50,108,229,0.1); border: 1px solid rgba(50,108,229,0.3);"><i class="fas fa-dharmachakra"></i></div>
+            <div class="build-ico" style="color: var(--k8s-blue); background: rgba(50,108,229,0.08); border: 1px solid rgba(50,108,229,0.25);"><i class="fas fa-dharmachakra"></i></div>
             <h3>Kubernetes Platforms</h3>
             <p>Container orchestration with Docker, Amazon EKS, Helm, and auto-scaling mechanisms.</p>
           </article>
           <article class="build-card">
-            <div class="build-ico" style="color: var(--neon-pink); background: rgba(240,171,252,0.1); border: 1px solid rgba(240,171,252,0.3);"><i class="fas fa-shield-alt"></i></div>
+            <div class="build-ico" style="color: var(--neon-pink); background: rgba(240,171,252,0.08); border: 1px solid rgba(240,171,252,0.25);"><i class="fas fa-shield-alt"></i></div>
             <h3>DevSecOps</h3>
             <p>Shift-left security integration using SonarQube, Trivy, and OWASP Dependency checks.</p>
           </article>
           <article class="build-card" style="grid-column: span 2;">
             <div style="display:flex; gap:20px; align-items:center; height: 100%;">
-              <div class="build-ico" style="color: var(--success-green); background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); margin:0; flex-shrink: 0; width: 70px; height: 70px; font-size: 2rem;"><i class="fas fa-chart-line"></i></div>
+              <div class="build-ico" style="color: var(--success-green); background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); margin:0; flex-shrink: 0; width: 70px; height: 70px; font-size: 2rem;"><i class="fas fa-chart-line"></i></div>
               <div>
                 <h3>GitOps & FinOps Automation</h3>
                 <p>Declarative continuous delivery via Argo CD and automated AWS cost intelligence architectures using Lambda, EventBridge, and SES reporting.</p>
@@ -652,7 +680,7 @@
               <dd>India</dd>
             </div>
           </dl>
-          <div style="margin-top: 25px; padding: 20px; border: 1px dashed var(--success-green); border-radius: 10px; background: rgba(16,185,129,0.08); display: flex; align-items: center; gap: 15px;">
+          <div style="margin-top: 25px; padding: 20px; border: 1px dashed var(--success-green); border-radius: 10px; background: rgba(16,185,129,0.06); display: flex; align-items: center; gap: 15px;">
             <i class="fas fa-satellite-dish" style="color: var(--success-green); font-size: 2rem; animation: pulse-glow 2s infinite alternate;"></i>
             <div>
               <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--success-green); letter-spacing: 2px;">STATUS</div>
@@ -669,74 +697,36 @@
         <p class="kicker">Technical Arsenal</p>
         <h2 style="font-size: 2.8rem; margin-bottom: 10px;">Mission Report</h2>
         
+        <!-- Infinite Marquee -->
         <div class="hex-wrapper">
           <div class="hex-track">
-            
-            <!-- Set 1 -->
-            <div class="hex-set">
-              <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#4E9BCD;"><i class="devicon-sonarqube-plain"></i></div><span>SonarQube</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
-              <!-- Fixed Grafana SVG -->
-              <div class="hex-item">
-                <div class="hex-icon">
-                  <svg viewBox="0 0 60 60" width="36" height="36" fill="none">
-                    <circle cx="30" cy="30" r="26" fill="#F46800"/>
-                    <path d="M16 38c4-8 8-12 14-12 6 0 10 4 14 12" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                    <circle cx="20" cy="28" r="4" fill="white"/>
-                    <circle cx="30" cy="24" r="4" fill="white"/>
-                    <circle cx="40" cy="28" r="4" fill="white"/>
-                    <path d="M20 28L30 24 40 28" stroke="white" stroke-width="1.5" opacity="0.6"/>
-                  </svg>
-                </div>
-                <span>Grafana</span>
-              </div>
-              <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#F05032;"><i class="devicon-git-plain"></i></div><span>Git</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#4EAA25;"><i class="devicon-bash-plain"></i></div><span>Bash</span></div>
-            </div>
-
-            <!-- Set 2 (Duplicate for infinite scroll) -->
-            <div class="hex-set">
-              <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#4E9BCD;"><i class="devicon-sonarqube-plain"></i></div><span>SonarQube</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
-              <div class="hex-item">
-                <div class="hex-icon">
-                  <svg viewBox="0 0 60 60" width="36" height="36" fill="none">
-                    <circle cx="30" cy="30" r="26" fill="#F46800"/>
-                    <path d="M16 38c4-8 8-12 14-12 6 0 10 4 14 12" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                    <circle cx="20" cy="28" r="4" fill="white"/>
-                    <circle cx="30" cy="24" r="4" fill="white"/>
-                    <circle cx="40" cy="28" r="4" fill="white"/>
-                    <path d="M20 28L30 24 40 28" stroke="white" stroke-width="1.5" opacity="0.6"/>
-                  </svg>
-                </div>
-                <span>Grafana</span>
-              </div>
-              <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#F05032;"><i class="devicon-git-plain"></i></div><span>Git</span></div>
-              <div class="hex-item"><div class="hex-icon" style="color:#4EAA25;"><i class="devicon-bash-plain"></i></div><span>Bash</span></div>
-            </div>
-
+            <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#F46800;"><i class="devicon-grafana-original"></i></div><span>Grafana</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
+            <!-- Loop Duplicates -->
+            <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#F46800;"><i class="devicon-grafana-original"></i></div><span>Grafana</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
+            <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
           </div>
         </div>
 
@@ -818,9 +808,7 @@
           <a href="https://github.com/vaibhavingle2002?tab=repositories" target="_blank" class="btn btn-outline" style="border:none; padding:10px 20px; text-decoration: none; color: var(--neon-cyan); background: rgba(0,229,255,0.05); border-radius: 8px;">View All on GitHub <i class="fas fa-arrow-right"></i></a>
         </div>
 
-        <div class="project-grid" id="project-container">
-          <!-- Projects generated by JS -->
-        </div>
+        <div class="project-grid" id="project-container"></div>
       </div>
     </section>
 
@@ -855,19 +843,19 @@
             <div class="tl-item" style="border-left-color: var(--k8s-blue);">
               <h3 style="color: var(--k8s-blue);">Master of Computer Applications (MCA)</h3>
               <h4>Sant Gadge Baba Amravati University</h4>
-              <span class="tl-date" style="background: rgba(50,108,229,0.15); color: var(--k8s-blue); border-color: rgba(50,108,229,0.3);">2025 – 2027</span>
+              <span class="tl-date" style="background: rgba(50,108,229,0.12); color: var(--k8s-blue); border-color: rgba(50,108,229,0.25);">2025 – 2027</span>
               <p style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--text-main);">SGPA: 7.56</p>
             </div>
             <div class="tl-item" style="border-left-color: var(--neon-cyan);">
               <h3 style="color: var(--neon-cyan);">Bachelor of Computer Applications (BCA)</h3>
               <h4>Sant Gadge Baba Amravati University</h4>
-              <span class="tl-date" style="background: rgba(0,229,255,0.15); color: var(--neon-cyan); border-color: rgba(0,229,255,0.3);">2022 – 2025</span>
+              <span class="tl-date" style="background: rgba(0,229,255,0.12); color: var(--neon-cyan); border-color: rgba(0,229,255,0.25);">2022 – 2025</span>
               <p style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--text-main);">CGPA: 7.86 (Top Performer — 3 Years)</p>
             </div>
             <div class="tl-item" style="border-left-color: var(--tf-purple);">
               <h3 style="color: var(--tf-purple);">DevOps with AWS Training</h3>
               <h4>Naresh IT, Hyderabad</h4>
-              <span class="tl-date" style="background: rgba(132,79,186,0.15); color: var(--tf-purple); border-color: rgba(132,79,186,0.3);">Professional Training</span>
+              <span class="tl-date" style="background: rgba(132,79,186,0.12); color: var(--tf-purple); border-color: rgba(132,79,186,0.25);">Professional Training</span>
             </div>
           </div>
         </article>
@@ -1056,7 +1044,7 @@
         </div>
         <div class="proj-actions">
           <button class="btn btn-primary" data-open="${i}" style="border-color: ${p.color}; color: ${p.color}; background: ${p.color}15; box-shadow:none;">View Details</button>
-          <a class="btn btn-outline" href="${p.github}" target="_blank" style="background: rgba(255,255,255,0.05);"><i class="fab fa-github"></i> GitHub</a>
+          <a class="btn btn-outline" href="${p.github}" target="_blank" style="background: rgba(255,255,255,0.03);"><i class="fab fa-github"></i> GitHub</a>
         </div>
       `;
       grid.appendChild(card);
@@ -1088,7 +1076,7 @@
       git.style.backgroundColor = p.color;
       git.style.borderColor = p.color;
       git.style.color = "#000";
-      git.style.boxShadow = `0 0 20px ${p.color}60`;
+      git.style.boxShadow = `0 0 20px ${p.color}50`;
       
       modal.classList.add("open");
     }
@@ -1127,8 +1115,8 @@
     let mouse = { x: null, y: null };
 
     function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
     }
     window.addEventListener('resize', resize);
     resize();
@@ -1137,74 +1125,75 @@
     window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
 
     class Particle {
-        constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 0.7;
-            this.vy = (Math.random() - 0.5) * 0.7;
-            this.radius = Math.random() * 2 + 0.5;
-            this.color = Math.random() > 0.5 ? 'rgba(0, 229, 255,' : 'rgba(132, 79, 186,';
-        }
-        update() {
-            this.x += this.vx; this.y += this.vy;
-            if (this.x < 0 || this.x > width) this.vx = -this.vx;
-            if (this.y < 0 || this.y > height) this.vy = -this.vy;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color + '0.6)';
-            ctx.fill();
-            
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = this.color + '1)';
-        }
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 1.5 + 0.4;
+        this.color = Math.random() > 0.5 ? 'rgba(0, 229, 255,' : 'rgba(132, 79, 186,';
+      }
+      update() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx = -this.vx;
+        if (this.y < 0 || this.y > height) this.vy = -this.vy;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color + '0.5)';
+        ctx.fill();
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = this.color + '0.8)';
+      }
     }
 
-    for (let i = 0; i < 120; i++) particles.push(new Particle());
+    for (let i = 0; i < 100; i++) particles.push(new Particle());
 
     function animate() {
-        ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
+      
+      ctx.strokeStyle = 'rgba(255,255,255,0.012)';
+      ctx.lineWidth = 1;
+      ctx.shadowBlur = 0;
+      for(let i=0; i<width; i+=70) { ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,height); ctx.stroke(); }
+      for(let i=0; i<height; i+=70) { ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(width,i); ctx.stroke(); }
+
+      for(let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
         
-        ctx.strokeStyle = 'rgba(255,255,255,0.015)';
-        ctx.lineWidth = 1;
         ctx.shadowBlur = 0;
         
-        for(let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-            
-            ctx.shadowBlur = 0;
-            
-            if(mouse.x != null) {
-                let dx = mouse.x - particles[i].x;
-                let dy = mouse.y - particles[i].y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if(distance < 150) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(0, 229, 255, ${0.25 * (1 - distance/150)})`;
-                    ctx.lineWidth = 1;
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(mouse.x, mouse.y);
-                    ctx.stroke();
-                }
-            }
-            
-            for(let j = i + 1; j < particles.length; j++) {
-                let dx = particles[i].x - particles[j].x;
-                let dy = particles[i].y - particles[j].y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if(distance < 100) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 * (1 - distance/100)})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
+        if(mouse.x != null) {
+          let dx = mouse.x - particles[i].x;
+          let dy = mouse.y - particles[i].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if(distance < 140) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 229, 255, ${0.2 * (1 - distance/140)})`;
+            ctx.lineWidth = 0.8;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+          }
         }
-        requestAnimationFrame(animate);
+        
+        for(let j = i + 1; j < particles.length; j++) {
+          let dx = particles[i].x - particles[j].x;
+          let dy = particles[i].y - particles[j].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if(distance < 90) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.06 * (1 - distance/90)})`;
+            ctx.lineWidth = 0.4;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
     }
     animate();
   </script>
