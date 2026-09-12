@@ -29,7 +29,7 @@
       --success-green: #10b981;
       
       /* Glass/Panels */
-      --panel-bg: rgba(6, 10, 20, 0.5);
+      --panel-bg: rgba(6, 10, 20, 0.6);
       --panel-border: rgba(0, 229, 255, 0.15);
       
       /* Typography */
@@ -60,10 +60,19 @@
     .nebula-bg {
       position: fixed; inset: 0; z-index: -2;
       background: 
-        radial-gradient(circle at 85% 15%, rgba(255, 153, 0, 0.08) 0%, transparent 35%),
-        radial-gradient(circle at 15% 85%, rgba(50, 108, 229, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(132, 79, 186, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 85% 15%, rgba(255, 153, 0, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 15% 85%, rgba(50, 108, 229, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(132, 79, 186, 0.05) 0%, transparent 60%);
       pointer-events: none; mix-blend-mode: screen;
+    }
+
+    .bg-grid {
+      position: fixed; inset: 0; z-index: -2;
+      background-image: 
+        linear-gradient(to right, rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
     }
 
     .scanline {
@@ -160,18 +169,18 @@
     }
     .kicker::before { content: ""; width: 25px; height: 2px; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
 
-    .hero { padding: 90px 0 60px; overflow: hidden; }
+    .hero { padding: 120px 0 80px; }
     .hero-grid { display: grid; gap: 50px; grid-template-columns: 1fr; }
-    @media(min-width: 1024px) { .hero-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; } }
+    @media(min-width: 1024px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; align-items: center; } }
 
     .hero-content h1 {
-      font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; line-height: 1.05; margin: 15px 0 5px;
-      text-transform: uppercase; letter-spacing: -0.02em;
+      font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.05; margin: 15px 0 5px;
+      text-transform: uppercase; letter-spacing: -0.02em; font-family: 'Chakra Petch', sans-serif;
+      text-shadow: 0 0 20px rgba(255,255,255,0.1);
     }
     .hero-content h1 .gradient-text {
-      background: linear-gradient(to right, var(--neon-cyan), #818cf8, var(--aws-orange));
+      background: linear-gradient(to right, #ffffff, #e2e8f0);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 40px rgba(0, 229, 255, 0.25);
     }
     .typewriter {
       font-family: var(--font-mono); font-size: 1.4rem; color: var(--success-green);
@@ -187,82 +196,138 @@
     .btns { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 35px; }
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 28px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.95rem; font-weight: 600;
+      padding: 12px 24px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.95rem; font-weight: 600;
       text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.3s ease;
-      position: relative; overflow: hidden;
+      position: relative; letter-spacing: 1px;
     }
-    .btn-primary {
-      background: rgba(0, 229, 255, 0.1); border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-    }
-    .btn-primary::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,229,255,0.4), transparent);
-      transition: all 0.5s ease;
-    }
-    .btn-primary:hover::before { left: 100%; }
-    .btn-primary:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); }
     
-    .btn-outline { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.2); color: var(--text-main); }
-    .btn-outline:hover { border-color: var(--aws-orange); color: var(--aws-orange); background: rgba(255,153,0,0.05); transform: translateY(-2px); }
+    /* Metallic Button Styling */
+    .btn-primary {
+      background: rgba(0, 20, 40, 0.6); border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15), inset 0 0 10px rgba(0, 229, 255, 0.1);
+    }
+    .btn-primary:hover { 
+      background: rgba(0, 229, 255, 0.1); 
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.2); 
+    }
+    
+    .btn-outline { 
+      background: linear-gradient(180deg, #333333 0%, #111111 100%); 
+      border: 1px solid #555; color: #fff; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+    }
+    .btn-outline:hover { 
+      border-color: #888; background: linear-gradient(180deg, #444444 0%, #222222 100%); 
+      transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.2);
+    }
 
     .orbital-system {
-      position: relative; width: 100%; max-width: 500px; aspect-ratio: 1;
+      position: relative; width: 100%; max-width: 550px; aspect-ratio: 1;
       margin: 0 auto; display: flex; justify-content: center; align-items: center;
     }
     
     @media(max-width: 768px) {
-        .orbital-system { transform: scale(0.7); margin: -40px auto; }
+        .orbital-system { transform: scale(0.6); margin: -60px auto; }
     }
 
-    /* Core Sun */
+    /* Blazing Sun Core */
     .orb-center {
-      position: absolute; width: 90px; height: 90px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffd480, #ff9900);
-      box-shadow: 0 0 60px rgba(255, 153, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.6);
-      display: grid; place-items: center; font-size: 3rem; color: #fff; z-index: 10;
-      animation: sun-pulse 4s infinite alternate;
+      position: absolute; width: 140px; height: 140px; border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #fffbd6 0%, #ffc000 20%, #ff6a00 50%, #cc0000 100%);
+      box-shadow: 0 0 60px #ff6a00, 0 0 120px #ffc000, inset 0 0 20px #fff;
+      display: grid; place-items: center; font-size: 4rem; color: #fff; z-index: 10;
+      animation: sun-pulse 4s ease-in-out infinite alternate;
     }
     @keyframes sun-pulse {
-        0% { box-shadow: 0 0 40px rgba(255,153,0,0.5), inset 0 0 15px rgba(255,255,255,0.5); transform: scale(1); }
-        100% { box-shadow: 0 0 80px rgba(255,153,0,0.8), inset 0 0 25px rgba(255,255,255,0.8); transform: scale(1.05); }
+        0% { transform: scale(1); box-shadow: 0 0 60px #ff6a00, 0 0 120px #ffc000, inset 0 0 20px #fff; }
+        100% { transform: scale(1.05); box-shadow: 0 0 80px #ff6a00, 0 0 150px #ffc000, inset 0 0 30px #fff; }
     }
 
-    /* Orbital Rings */
+    /* Rotation Wrappers */
+    .orb-wrapper {
+      position: absolute; width: 100%; height: 100%;
+      border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      animation: spin linear infinite;
+    }
+    .w1 { width: 260px; height: 260px; animation-duration: 20s; }
+    .w2 { width: 400px; height: 400px; animation-duration: 35s; animation-direction: reverse; }
+    .w3 { width: 540px; height: 540px; animation-duration: 50s; }
+
+    /* Orbital Rings (Trails) */
     .orb-ring {
-      position: absolute; border-radius: 50%;
-      border: 1px dashed rgba(255, 255, 255, 0.15);
-      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
+      position: absolute; width: 100%; height: 100%; border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
     }
-    .ring-1 { width: 220px; height: 220px; border-color: rgba(36, 150, 237, 0.4); }
-    .ring-2 { width: 340px; height: 340px; border-color: rgba(132, 79, 186, 0.4); }
-    .ring-3 { width: 460px; height: 460px; border-color: rgba(0, 229, 255, 0.3); }
-
-    /* Wrappers for rotation */
-    .orb-wrapper { position: absolute; width: 100%; height: 100%; border-radius: 50%; animation: spin linear infinite; }
-    .w1 { animation-duration: 20s; }
-    .w2 { animation-duration: 35s; animation-direction: reverse; }
-    .w3 { animation-duration: 50s; }
     
-    /* Offsets to space planets evenly on the same ring */
+    /* Offsets to space planets evenly */
     .pos-180 { transform: rotate(180deg); }
     .pos-120 { transform: rotate(120deg); }
     .pos-240 { transform: rotate(240deg); }
 
-    /* Node Planets */
-    .orb-node {
-      position: absolute; width: 44px; height: 44px; border-radius: 50%;
-      background: #02040a; border: 2px solid; display: grid; place-items: center;
-      font-size: 1.3rem; color: #fff;
-      top: -22px; left: calc(50% - 22px); /* Position top center of the wrapper */
+    /* 3D Realistic Planets */
+    .planet {
+      position: absolute; border-radius: 50%;
+      display: grid; place-items: center; color: #fff;
+      /* Inner shadow creates the 3D spherical illusion */
+      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0,0,0,0.5);
       animation: counter-spin linear infinite;
+      top: 0; left: 50%; transform: translate(-50%, -50%); /* Start at top center of wrapper */
     }
-    .n1 { animation-duration: 20s; }
-    .n2 { animation-duration: 35s; animation-direction: reverse; }
-    .n3 { animation-duration: 50s; }
+    
+    /* K8s Planet (Ice/Water) */
+    .planet-k8s {
+      width: 60px; height: 60px; font-size: 1.5rem; margin-top: -30px;
+      background: radial-gradient(circle at 30% 30%, #a0e8ff, #326ce5 60%, #002266);
+      animation-duration: 20s;
+    }
+    
+    /* Docker Planet (Blue Ocean) */
+    .planet-docker {
+      width: 50px; height: 50px; font-size: 1.2rem; margin-top: -25px;
+      background: radial-gradient(circle at 30% 30%, #88ccff, #2496ED 60%, #003366);
+      animation-duration: 20s;
+    }
+
+    /* Terraform Planet (Purple Gas Giant with Rings) */
+    .planet-tf {
+      width: 75px; height: 75px; font-size: 1.6rem; margin-top: -37.5px;
+      background: radial-gradient(circle at 30% 30%, #e8b0ff, #844fba 60%, #3a0066);
+      animation-duration: 35s; animation-direction: reverse;
+    }
+    .planet-tf::after {
+      content: ''; position: absolute; width: 170%; height: 35%;
+      border: 4px solid rgba(200, 150, 255, 0.5); border-radius: 50%; transform: rotate(25deg);
+      box-shadow: 0 0 15px rgba(200, 150, 255, 0.4);
+    }
+
+    /* Red Magma Planet (Git/Security) */
+    .planet-magma {
+      width: 55px; height: 55px; font-size: 1.4rem; margin-top: -27.5px;
+      background: radial-gradient(circle at 30% 30%, #ff8888, #cc0000 60%, #440000);
+      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.9), 0 0 20px rgba(204, 0, 0, 0.6);
+      animation-duration: 35s; animation-direction: reverse;
+    }
+
+    /* Rocky Planet (Prometheus/Observability) */
+    .planet-rocky {
+      width: 65px; height: 65px; font-size: 1.5rem; margin-top: -32.5px;
+      background: radial-gradient(circle at 30% 30%, #ffeebb, #c2823a 60%, #553311);
+      animation-duration: 50s;
+    }
+    
+    /* Jenkins Planet */
+    .planet-jenkins {
+      width: 55px; height: 55px; font-size: 1.3rem; margin-top: -27.5px;
+      background: radial-gradient(circle at 30% 30%, #ffcccc, #D24939 60%, #660000);
+      animation-duration: 50s;
+    }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes counter-spin { 100% { transform: rotate(-360deg); } }
+    @keyframes counter-spin { 
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(-360deg); } 
+    }
 
     .build-section { margin-top: -20px; margin-bottom: 60px; }
     .build-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -339,16 +404,14 @@
       width: 100%; overflow: hidden; padding: 30px 0; margin-top: 20px; position: relative;
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-      display: flex; white-space: nowrap;
     }
-    .hex-track {
-      display: inline-flex; width: max-content;
-      animation: scroll-left 30s linear infinite; gap: 40px; padding-left: 40px;
-    }
-    .hex-wrapper:hover .hex-track { animation-play-state: paused; }
-    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+    .hex-track { display: flex; width: max-content; animation: scroll-left 40s linear infinite; gap: 40px; padding-left: 40px; }
+    .hex-track:hover { animation-play-state: paused; }
+    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     
-    .hex-item { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; }
+    .hex-set { display: flex; gap: 40px; }
+    
+    .hex-item { display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; }
     .hex-icon {
       width: 70px; height: 70px; background: rgba(0,0,0,0.6); border: 1px solid var(--panel-border);
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -412,13 +475,17 @@
     .modal-arch { display: flex; flex-wrap: wrap; gap: 15px; margin: 25px 0; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 10px; border: 1px dashed rgba(255,255,255,0.2); }
     .arch-node { font-family: var(--font-mono); font-size: 0.9rem; color: var(--neon-cyan); display: flex; align-items: center; gap: 10px; background: rgba(0,229,255,0.1); padding: 6px 12px; border-radius: 4px; }
     .arch-node:not(:last-child)::after { content: '\f061'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: var(--text-dim); margin-left: 10px; }
+
   </style>
 </head>
 <body>
+  <!-- Dynamic Backgrounds -->
   <canvas id="cosmic-canvas"></canvas>
   <div class="nebula-bg"></div>
+  <div class="bg-grid"></div>
   <div class="scanline"></div>
 
+  <!-- Header -->
   <header>
     <div class="wrap nav">
       <a class="brand" href="#home">
@@ -441,6 +508,7 @@
     </div>
   </header>
 
+  <!-- Mobile Menu -->
   <div class="drawer" id="drawer">
     <button class="x" id="close-menu"><i class="fas fa-times"></i></button>
     <nav>
@@ -454,11 +522,12 @@
   </div>
 
   <main>
+    <!-- ─── HERO SECTION ─── -->
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <!-- Left: Content -->
         <div class="hero-content">
-          <p class="kicker">Connection Established</p>
+          <p class="kicker"><span style="display:inline-block; width:20px; height:2px; background:var(--neon-cyan); margin-right:8px;"></span> CONNECTION ESTABLISHED</p>
           <h1 class="gradient-text">VAIBHAV<br>SUDHAKAR INGLE</h1>
           <div class="typewriter">> AWS DevOps Engineer_</div>
           <p class="tag">Engineering scalable, secure, and automated cloud infrastructure with AWS, Kubernetes, Terraform, DevSecOps, and GitOps methodologies.</p>
@@ -470,70 +539,41 @@
           </div>
         </div>
         
-        <!-- Right: HD Solar/Orbital System -->
+        <!-- Right: Realistic 3D Orbital System -->
         <div class="orbital-system">
           
-          <!-- Core Sun (AWS) -->
+          <!-- Blazing Center Sun -->
           <div class="orb-center" title="AWS Core">
             <i class="fab fa-aws"></i>
           </div>
 
           <!-- Ring 1 (Inner) -->
-          <div class="orb-ring ring-1">
-            <div class="orb-wrapper w1">
-              <div class="orb-node n1" style="border-color:#2496ED; color:#2496ED; box-shadow:0 0 15px #2496ED;" title="Docker">
-                <i class="fab fa-docker"></i>
-              </div>
-            </div>
-            <div class="orb-wrapper w1 pos-180">
-              <div class="orb-node n1" style="border-color:#FCC624; color:#FCC624; box-shadow:0 0 15px #FCC624;" title="Linux">
-                <i class="devicon-linux-plain"></i>
-              </div>
-            </div>
+          <div class="orb-wrapper w1">
+            <div class="orb-ring"></div>
+            <div class="planet planet-k8s"><i class="fas fa-dharmachakra"></i></div>
+            <div class="planet planet-docker pos-180"><i class="fab fa-docker"></i></div>
           </div>
 
           <!-- Ring 2 (Middle) -->
-          <div class="orb-ring ring-2">
-            <div class="orb-wrapper w2">
-              <div class="orb-node n2" style="border-color:#326CE5; color:#326CE5; box-shadow:0 0 15px #326CE5;" title="Kubernetes">
-                <i class="fas fa-dharmachakra"></i>
-              </div>
-            </div>
-            <div class="orb-wrapper w2 pos-120">
-              <div class="orb-node n2" style="border-color:#844FBA; color:#844FBA; box-shadow:0 0 15px #844FBA;" title="Terraform">
-                <i class="fas fa-network-wired"></i>
-              </div>
-            </div>
-            <div class="orb-wrapper w2 pos-240">
-              <div class="orb-node n2" style="border-color:#EE0000; color:#EE0000; box-shadow:0 0 15px #EE0000;" title="Ansible">
-                <i class="devicon-ansible-plain"></i>
-              </div>
-            </div>
+          <div class="orb-wrapper w2">
+            <div class="orb-ring"></div>
+            <div class="planet planet-tf"><i class="fas fa-network-wired"></i></div>
+            <div class="planet planet-magma pos-180"><i class="fab fa-git-alt"></i></div>
           </div>
 
           <!-- Ring 3 (Outer) -->
-          <div class="orb-ring ring-3">
-            <div class="orb-wrapper w3">
-              <div class="orb-node n3" style="border-color:#D24939; color:#D24939; box-shadow:0 0 15px #D24939;" title="Jenkins">
-                <i class="fab fa-jenkins"></i>
-              </div>
-            </div>
-            <div class="orb-wrapper w3 pos-120">
-              <div class="orb-node n3" style="border-color:#4E9BCD; color:#4E9BCD; box-shadow:0 0 15px #4E9BCD;" title="SonarQube">
-                <svg viewBox="0 0 60 60" width="22" height="22" fill="none"><path d="M10 50c0-22 10-32 20-32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 50c0-18 10-26 22-26" stroke="#CB2127" stroke-width="4" stroke-linecap="round"/><path d="M26 50c0-14 10-20 24-20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
-              </div>
-            </div>
-            <div class="orb-wrapper w3 pos-240">
-              <div class="orb-node n3" style="border-color:#E6522C; color:#E6522C; box-shadow:0 0 15px #E6522C;" title="Prometheus">
-                <i class="devicon-prometheus-original"></i>
-              </div>
-            </div>
+          <div class="orb-wrapper w3">
+            <div class="orb-ring"></div>
+            <div class="planet planet-rocky pos-120"><i class="fas fa-chart-line"></i></div>
+            <div class="planet planet-jenkins pos-240"><i class="fab fa-jenkins"></i></div>
+            <div class="planet planet-rocky" style="background: radial-gradient(circle at 30% 30%, #ffd480, #8b5cf6 60%, #3a0066);"><i class="fas fa-shield-alt"></i></div>
           </div>
-
+          
         </div>
       </div>
     </section>
 
+    <!-- ─── WHAT I BUILD ─── -->
     <section class="build-section">
       <div class="wrap">
         <div class="build-grid">
@@ -570,6 +610,7 @@
       </div>
     </section>
 
+    <!-- ─── ABOUT SECTION ─── -->
     <section id="about">
       <div class="wrap two-col">
         <article class="hud" style="padding:40px">
@@ -622,50 +663,80 @@
       </div>
     </section>
 
+    <!-- ─── SKILLS SECTION ─── -->
     <section id="skills">
       <div class="wrap">
         <p class="kicker">Technical Arsenal</p>
         <h2 style="font-size: 2.8rem; margin-bottom: 10px;">Mission Report</h2>
         
-        <!-- Infinite Scrolling Hex Strip -->
         <div class="hex-wrapper">
           <div class="hex-track">
+            
             <!-- Set 1 -->
-            <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#4E9BCD;"><svg viewBox="0 0 60 60" width="30" height="30" fill="none"><path d="M10 50c0-22 10-32 20-32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 50c0-18 10-26 22-26" stroke="#CB2127" stroke-width="4" stroke-linecap="round"/><path d="M26 50c0-14 10-20 24-20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></div><span>SonarQube</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#F46800;"><svg viewBox="0 0 60 60" width="30" height="30" fill="none"><circle cx="30" cy="30" r="26" fill="#F46800"/><path d="M16 38c4-8 8-12 14-12 6 0 10 4 14 12" stroke="white" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="28" r="4" fill="white"/><circle cx="30" cy="24" r="4" fill="white"/><circle cx="40" cy="28" r="4" fill="white"/><path d="M20 28L30 24 40 28" stroke="white" stroke-width="1.5" opacity="0.6"/></svg></div><span>Grafana</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#F05032;"><i class="devicon-git-plain"></i></div><span>Git</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#4EAA25;"><i class="devicon-bash-plain"></i></div><span>Bash</span></div>
-          </div>
-          <div class="hex-track">
+            <div class="hex-set">
+              <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#4E9BCD;"><i class="devicon-sonarqube-plain"></i></div><span>SonarQube</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
+              <!-- Fixed Grafana SVG -->
+              <div class="hex-item">
+                <div class="hex-icon">
+                  <svg viewBox="0 0 60 60" width="36" height="36" fill="none">
+                    <circle cx="30" cy="30" r="26" fill="#F46800"/>
+                    <path d="M16 38c4-8 8-12 14-12 6 0 10 4 14 12" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="20" cy="28" r="4" fill="white"/>
+                    <circle cx="30" cy="24" r="4" fill="white"/>
+                    <circle cx="40" cy="28" r="4" fill="white"/>
+                    <path d="M20 28L30 24 40 28" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                  </svg>
+                </div>
+                <span>Grafana</span>
+              </div>
+              <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#F05032;"><i class="devicon-git-plain"></i></div><span>Git</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#4EAA25;"><i class="devicon-bash-plain"></i></div><span>Bash</span></div>
+            </div>
+
             <!-- Set 2 (Duplicate for infinite scroll) -->
-             <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#4E9BCD;"><svg viewBox="0 0 60 60" width="30" height="30" fill="none"><path d="M10 50c0-22 10-32 20-32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 50c0-18 10-26 22-26" stroke="#CB2127" stroke-width="4" stroke-linecap="round"/><path d="M26 50c0-14 10-20 24-20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></div><span>SonarQube</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#F46800;"><svg viewBox="0 0 60 60" width="30" height="30" fill="none"><circle cx="30" cy="30" r="26" fill="#F46800"/><path d="M16 38c4-8 8-12 14-12 6 0 10 4 14 12" stroke="white" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="28" r="4" fill="white"/><circle cx="30" cy="24" r="4" fill="white"/><circle cx="40" cy="28" r="4" fill="white"/><path d="M20 28L30 24 40 28" stroke="white" stroke-width="1.5" opacity="0.6"/></svg></div><span>Grafana</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#F05032;"><i class="devicon-git-plain"></i></div><span>Git</span></div>
-            <div class="hex-item"><div class="hex-icon" style="color:#4EAA25;"><i class="devicon-bash-plain"></i></div><span>Bash</span></div>
+            <div class="hex-set">
+              <div class="hex-item"><div class="hex-icon" style="color:#FF9900;"><i class="devicon-amazonwebservices-plain-wordmark"></i></div><span>AWS</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#0078D4;"><i class="devicon-azure-plain"></i></div><span>Azure</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#844FBA;"><i class="devicon-terraform-plain"></i></div><span>Terraform</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#2496ED;"><i class="devicon-docker-plain"></i></div><span>Docker</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#326CE5;"><i class="devicon-kubernetes-plain"></i></div><span>K8s</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#D24939;"><i class="devicon-jenkins-line"></i></div><span>Jenkins</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#2088FF;"><i class="devicon-githubactions-plain"></i></div><span>Actions</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#EF7B4D;"><i class="devicon-argocd-plain"></i></div><span>ArgoCD</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#4E9BCD;"><i class="devicon-sonarqube-plain"></i></div><span>SonarQube</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#E6522C;"><i class="devicon-prometheus-original"></i></div><span>Prometheus</span></div>
+              <div class="hex-item">
+                <div class="hex-icon">
+                  <svg viewBox="0 0 60 60" width="36" height="36" fill="none">
+                    <circle cx="30" cy="30" r="26" fill="#F46800"/>
+                    <path d="M16 38c4-8 8-12 14-12 6 0 10 4 14 12" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="20" cy="28" r="4" fill="white"/>
+                    <circle cx="30" cy="24" r="4" fill="white"/>
+                    <circle cx="40" cy="28" r="4" fill="white"/>
+                    <path d="M20 28L30 24 40 28" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                  </svg>
+                </div>
+                <span>Grafana</span>
+              </div>
+              <div class="hex-item"><div class="hex-icon" style="color:#EE0000;"><i class="devicon-ansible-plain"></i></div><span>Ansible</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#FCC624;"><i class="devicon-linux-plain"></i></div><span>Linux</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#3776AB;"><i class="devicon-python-plain"></i></div><span>Python</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#F05032;"><i class="devicon-git-plain"></i></div><span>Git</span></div>
+              <div class="hex-item"><div class="hex-icon" style="color:#4EAA25;"><i class="devicon-bash-plain"></i></div><span>Bash</span></div>
+            </div>
+
           </div>
         </div>
 
@@ -736,6 +807,7 @@
       </div>
     </section>
 
+    <!-- ─── PROJECTS SECTION ─── -->
     <section id="projects">
       <div class="wrap">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
@@ -752,6 +824,7 @@
       </div>
     </section>
 
+    <!-- ─── EXPERIENCE & EDUCATION SECTION ─── -->
     <section id="experience">
       <div class="wrap two-col">
         <!-- Experience -->
@@ -802,6 +875,7 @@
       </div>
     </section>
 
+    <!-- ─── CONTACT SECTION ─── -->
     <section id="contact">
       <div class="wrap">
         <article class="hud contact-card">
@@ -833,6 +907,7 @@
     </div>
   </footer>
 
+  <!-- ─── PROJECT MODAL ─── -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="hud modal-content">
       <span class="cbl"></span><span class="cbr"></span>
@@ -1026,13 +1101,11 @@
     document.getElementById("close-modal").onclick = () => modal.classList.remove("open");
     modal.addEventListener("click", (e) => { if (e.target === modal) modal.classList.remove("open"); });
 
-    /* Mobile Menu Drawer */
     const drawer = document.getElementById("drawer");
     document.getElementById("open-menu").onclick = () => drawer.classList.add("open");
     document.getElementById("close-menu").onclick = () => drawer.classList.remove("open");
     drawer.querySelectorAll("a").forEach(a => a.onclick = () => drawer.classList.remove("open"));
 
-    /* Navigation Active State Logic */
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".links a");
     window.addEventListener("scroll", () => {
@@ -1083,7 +1156,6 @@
             ctx.fillStyle = this.color + '0.6)';
             ctx.fill();
             
-            // Add slight glow
             ctx.shadowBlur = 10;
             ctx.shadowColor = this.color + '1)';
         }
@@ -1094,20 +1166,16 @@
     function animate() {
         ctx.clearRect(0, 0, width, height);
         
-        // Draw subtle grid lines
         ctx.strokeStyle = 'rgba(255,255,255,0.015)';
         ctx.lineWidth = 1;
         ctx.shadowBlur = 0;
-        for(let i=0; i<width; i+=60) { ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,height); ctx.stroke(); }
-        for(let i=0; i<height; i+=60) { ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(width,i); ctx.stroke(); }
-
+        
         for(let i = 0; i < particles.length; i++) {
             particles[i].update();
             particles[i].draw();
             
-            ctx.shadowBlur = 0; // Reset shadow for lines
+            ctx.shadowBlur = 0;
             
-            // Mouse connection
             if(mouse.x != null) {
                 let dx = mouse.x - particles[i].x;
                 let dy = mouse.y - particles[i].y;
@@ -1122,7 +1190,6 @@
                 }
             }
             
-            // Particle to Particle connection
             for(let j = i + 1; j < particles.length; j++) {
                 let dx = particles[i].x - particles[j].x;
                 let dy = particles[i].y - particles[j].y;
